@@ -1,51 +1,92 @@
-const producto0 = {nombre: "Fragancia Masculina",precio: 8000,stock: 8, cod:"0"}
-const producto1 = {nombre: "Fragancia Femenina",precio: 8000,stock: 1, cod:"1"}
-const producto2 = {nombre: "Invicto",precio: 22000,stock: 4, cod:"2"}
-const producto3 = {nombre: "Blue Tequila",precio: 10000,stock: 22, cod:"3"}
-const producto4 = {nombre: "Flowers",precio: 25000,stock: 0, cod:"4"}
-const producto5 = {nombre: "BodySplash",precio: 8000,stock: 3, cod:"5"}
-const producto6 = {nombre: "NightMares",precio: 25000,stock: 0, cod:"6"}
-const producto7 = {nombre: "Difusor",precio: 8000,stock: 3, cod:"7"}
 
-const catalogo = [producto0,producto1,producto2,producto3,producto4,producto5,producto6,producto7];
+var productos = [
+    { id: 1, nombre: 'Fragancia Masculina', precio: 8000, stock: 23},
+    { id: 2, nombre: 'Fragancia Femenina', precio: 8000, stock: 1},
+    { id: 3, nombre: 'Invicto', precio: 26000, stock: 7},
+    { id: 4, nombre: '212 VIP', precio: 25000, stock: 22},
+    { id: 5, nombre: 'Nightmare', precio: 23000, stock: 0},
+    { id: 6, nombre: 'BodySplash', precio: 5000, stock: 15},
+];
 
-let carro = [];
+var carrito = [];
 
-let totalCarro = 0;
+function mostrarProductos() {
+    var contenedorProductos = document.getElementById('productos');
 
-function mostrarCatalogo(){
-    console.log("Catalogo disponible:")
-    for(const producto of catalogo){
-        console.log(producto.nombre + "  | Precio: " + producto.precio + " Stock: "+ producto.stock + " CODIGO: " + producto.cod)
+    for (var i = 0; i < productos.length; i++) {
+        var producto = productos[i];
+
+        var productoDiv = document.createElement('div');
+        var nombreProducto = document.createElement('h3');
+        nombreProducto.textContent = producto.nombre;
+
+        var precioProducto = document.createElement('p');
+        precioProducto.textContent = 'Precio: $' + producto.precio;
+
+        var botonAgregar = document.createElement('button');
+        botonAgregar.textContent = 'Agregar al Carrito';
+        botonAgregar.setAttribute('onclick', 'agregarAlCarrito(' + producto.id + ')');
+
+        var stockProducto = document.createElement('p');
+        stockProducto.textContent = 'Stock: ' + producto.stock + ' unidades';
+
+        productoDiv.appendChild(nombreProducto);
+        productoDiv.appendChild(precioProducto);
+        productoDiv.appendChild(botonAgregar);
+        productoDiv.appendChild(stockProducto);
+
+        contenedorProductos.appendChild(productoDiv);
     }
-    console.log("Para agregar producto al carro escribir: agregarACarro(codigo del producto)")
-    console.log("Para ver el precio del carro escribir: precioCarro()")
-    console.log("Para finalizar la compra escribir: comprar()")
 }
 
-function precioCarro(){
-    console.log("Valor del carro: "+totalCarro)
-}
+// Agregar producto al carrito
+function agregarAlCarrito(id) {
+    var productoSeleccionado;
 
-function agregarACarro(codigoAgregar){
-    productoAgregar = codigoAgregar
-    if (catalogo[productoAgregar].stock > 0){
-        carro.push(catalogo[productoAgregar])
-        catalogo[productoAgregar].stock--
-    }else{
-        alert("No queda stock del producto seleccionado")
+    for (var i = 0; i < productos.length; i++) {
+        if (productos[i].id === id && productos[i].stock > 0) {
+            productoSeleccionado = productos[i];
+            productos[i].stock--
+            break;
+        } else if (productos[i].stock === 0){
+            alert("No que mas stock")
+        }
     }
-    precioTotal = 0
-    for (i of carro){
-        precioTotal += i.precio
+
+    carrito.push(productoSeleccionado);
+    actualizarCarrito();
+}
+
+// Actualizar la vista del carrito
+function actualizarCarrito() {
+    var contenedorCarrito = document.getElementById('items-carrito');
+    contenedorCarrito.innerHTML = ''; // Limpiar el carrito
+
+    var total = 0;
+
+    for (var i = 0; i < carrito.length; i++) {
+        var item = carrito[i];
+
+        var itemDiv = document.createElement('div');
+        var nombreItem = document.createElement('h4');
+        nombreItem.textContent = item.nombre;
+
+        var precioItem = document.createElement('p');
+        precioItem.textContent = 'Precio: $' + item.precio;
+
+        itemDiv.appendChild(nombreItem);
+        itemDiv.appendChild(precioItem);
+
+        contenedorCarrito.appendChild(itemDiv);
+
+        total += item.precio;
     }
-    totalCarro += precioTotal
-    console.log("Haz agregado el articulo COD:"+codigoAgregar+". Valor del carro: "+totalCarro)
+
+    var totalParrafo = document.getElementById('total');
+    totalParrafo.textContent = 'Total: $' + total;
 }
 
-function comprar(){
-    nombreComprador = prompt("Ingresa su nombre:")
-    alert("Va a realizar un pago de $" + totalCarro + " pesos")
-}
-
-mostrarCatalogo()
+// Inicializar
+document.addEventListener('DOMContentLoaded', function() {
+    mostrarProductos();
+});
