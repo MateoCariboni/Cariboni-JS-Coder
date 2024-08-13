@@ -1,7 +1,13 @@
 *{
     justify-content: center;
+    background-color: bisque;
 }
 
+h1{
+    background-color: rgb(120, 65, 12);
+    color: white;
+    padding: 20px;
+}
 #productos{
     display: flex;
 }
