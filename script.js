@@ -28,7 +28,7 @@ function mostrarProductos() {
         botonAgregar.setAttribute('onclick', 'agregarAlCarrito(' + producto.id + ')');
 
         var stockProducto = document.createElement('p');
-        stockProducto.textContent = 'Stock: ' + producto.stock + ' unidades';
+        stockProducto.textContent = 'Stock: ' + producto.stock;
 
         productoDiv.appendChild(nombreProducto);
         productoDiv.appendChild(precioProducto);
@@ -39,28 +39,42 @@ function mostrarProductos() {
     }
 }
 
-// Agregar producto al carrito
+function actualizarProductos() {
+    var contenedorProductos = document.getElementById('productos');
+    contenedorProductos.innerHTML = '';
+    mostrarProductos();
+}
+
 function agregarAlCarrito(id) {
     var productoSeleccionado;
+    var productoEncontrado = false;
 
     for (var i = 0; i < productos.length; i++) {
-        if (productos[i].id === id && productos[i].stock > 0) {
-            productoSeleccionado = productos[i];
-            productos[i].stock--
+        if (productos[i].id === id) {
+            productoEncontrado = true;
+
+            if (productos[i].stock > 0) {
+                productoSeleccionado = productos[i];
+                productos[i].stock = productos[i].stock - 1;
+                carrito.push(productoSeleccionado);
+                actualizarCarrito();
+                actualizarProductos();
+            } else {
+                alert("No queda más stock");
+            }
             break;
-        } else if (productos[i].stock === 0){
-            alert("No que mas stock")
         }
     }
 
-    carrito.push(productoSeleccionado);
-    actualizarCarrito();
+    if (!productoEncontrado) {
+        alert("Producto no encontrado.");
+    }
 }
 
-// Actualizar la vista del carrito
+
 function actualizarCarrito() {
     var contenedorCarrito = document.getElementById('items-carrito');
-    contenedorCarrito.innerHTML = ''; // Limpiar el carrito
+    contenedorCarrito.innerHTML = '';
 
     var total = 0;
 
@@ -83,10 +97,9 @@ function actualizarCarrito() {
     }
 
     var totalParrafo = document.getElementById('total');
-    totalParrafo.textContent = 'Total: $' + total;
+    totalParrafo.textContent = 'Suma Total: $' + total;
 }
 
-// Inicializar
 document.addEventListener('DOMContentLoaded', function() {
     mostrarProductos();
 });

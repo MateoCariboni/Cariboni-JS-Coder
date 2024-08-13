@@ -1,0 +1,23 @@
+*{
+    justify-content: center;
+}
+
+#productos{
+    display: flex;
+}
+
+#productos div{
+    margin: 20px;
+}
+
+h2, #total{
+    text-align: center;
+}
+#items-carrito{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#items-carrito div{
+    margin: 20px;
+}
