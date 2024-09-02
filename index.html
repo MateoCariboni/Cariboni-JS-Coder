@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mateo Cariboni</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <body>
-        <nav>
-            <h1>SM Fragancias</h1>
-        </nav>
+    <nav>
+        <h1>SM Fragancias</h1>
+        <div id="carrito-icono">
+            <img src="img/cart-icon.png" alt="Carrito" id="iconoCarrito">
+        </div>
+    </nav>
 
-        <section id="catalogo">
-            <h2>Catalogo</h2>
-            <div id="productos"></div>
-        </section>
+    <section id="catalogo">
+        <h2>Catálogo</h2>
+        <div id="productos"></div>
+    </section>
 
-        <section id="carrito">
-            <h2>Carrito</h2>
-            <div id="items-carrito"></div>
-            <p id="total"></p>
-            <button onclick="pedirNombre()">Pagar</button>
-        </section>
-    </body>
+    <section id="carrito" class="hidden">
+        <h2>Carrito</h2>
+        <div id="items-carrito"></div>
+        <p id="total"></p>
+        <button id="pagarButton">Pagar</button>
+    </section>
 </body>
 </html>
-

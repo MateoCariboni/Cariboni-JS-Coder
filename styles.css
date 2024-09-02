@@ -3,13 +3,23 @@
     background-color: bisque;
 }
 
-h1{
+nav{
     background-color: rgb(120, 65, 12);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 10px;
+}
+h1{
     color: white;
-    padding: 20px;
+    background-color: rgb(120, 65, 12);
 }
 #productos{
     display: flex;
+    flex-wrap: wrap;
 }
 
 #productos div{
@@ -18,12 +28,61 @@ h1{
 
 h2, #total{
     text-align: center;
+    padding: 5px;
 }
 #items-carrito{
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 5px;
 }
 #items-carrito div{
-    margin: 20px;
+    border-bottom: 1px solid rgb(120, 65, 12);
 }
+
+.imgCatalogo{
+    width: 200px;
+    border-radius: 20px;
+}
+
+#iconoCarrito {
+    height: 50px;
+    background-color: rgb(120, 65, 12);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#carrito.hidden {
+    display: none;
+}
+
+#carrito {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    z-index: 100;
+    border-radius: 6px;
+}
+
+#carrito h2 {
+    margin-top: 0;
+}
+
+button{
+    color: white;
+    background-color: rgb(120, 65, 12);
+    border: 0;
+    padding: 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.stock{
+    justify-content: end;
+}
+
+
