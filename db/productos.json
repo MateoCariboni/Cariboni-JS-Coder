@@ -1,0 +1,11 @@
+[
+    { "id": 1, "img": "fra_masc", "nombre": "Fragancia Masculina", "precio": 8000, "stock": 23 },
+    { "id": 2, "img": "fra_fem", "nombre": "Fragancia Femenina", "precio": 8000, "stock": 1 },
+    { "id": 3, "img": "invicto", "nombre": "Invicto", "precio": 26000, "stock": 7 },
+    { "id": 4, "img": "212_vip", "nombre": "212 VIP", "precio": 25000, "stock": 22 },
+    { "id": 5, "img": "nightmare", "nombre": "Nightmare", "precio": 23000, "stock": 0 },
+    { "id": 6, "img": "bodysplash", "nombre": "BodySplash", "precio": 5000, "stock": 15 },
+    { "id": 7, "img": "textil", "nombre": "Textil", "precio": 20000, "stock": 3 },
+    { "id": 8, "img": "212", "nombre": "212", "precio": 13000, "stock": 15 },
+    { "id": 9, "img": "boss", "nombre": "BOSS", "precio": 18000, "stock": 100 }
+]

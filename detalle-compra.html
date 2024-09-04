@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Compra</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/detalle-compra.js"></script>
+</head>
+
+<body>
+    <nav>
+        <h1 class="detalle-nombre">Sm Fragancias</h1>
+    </nav>
+    <div class="pantalla-pago">
+        <section id="datos-tarjeta">
+            <h3>Selecciona un método de pago:</h3>
+            <form>
+                <input type="radio" name="pago" value="efectivo" id="efectivo"> Efectivo
+                <input type="radio" name="pago" value="debito" id="debito"> Débito
+                <input type="radio" name="pago" value="cuotas" id="cuotas"> Cuotas
+            </form>
+
+            <div id="efectivoDiv" class="opciones">
+                <h4>Opción en efectivo: Abona al recibir</h4>
+            </div>
+
+            <div id="debitoDiv" class="opciones">
+                <h4>Opción en débito:</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="nombreTitular">Nombre del Titular</label>
+                        <input type="text" id="nombreTitular" class="full-width" placeholder="Nombre del Titular">
+                    </div>
+                    <div class="form-group">
+                        <label for="codigoSeguridad">Código de seguridad</label>
+                        <input type="text" id="codigoSeguridad" placeholder="CVC">
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroTarjeta">Número de Tarjeta</label>
+                        <input type="text" id="numeroTarjeta" class="full-width" placeholder="Número de Tarjeta">
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaExpiracion">Fecha de expiración</label>
+                        <select id="mes">
+                            <option value="01">01 - Enero</option>
+                            <option value="02">02 - Febrero</option>
+                            <option value="03">03 - Marzo</option>
+                            <!-- Más opciones -->
+                        </select>
+                        <select id="anio">
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <!-- Más opciones -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-pagar">Pagar</button>
+                </form>
+            </div>
+
+            <div id="cuotasDiv" class="opciones">
+                <h4>Opción en cuotas:</h4>
+                <!-- Contenido específico para cuotas -->
+            </div><br><br>
+        </section>
+        <section>
+            <div id="detalle-compra">
+                <div id="items-detalle"></div>
+                <p id="total-compra"></p>
+            </div>
+            <button id="finalizarButton">Finalizar Compra</button>
+        </section>
+    </div>
+</body>
+
+</html>
