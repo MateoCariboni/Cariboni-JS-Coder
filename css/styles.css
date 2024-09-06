@@ -1,4 +1,4 @@
-*{
+body{
     justify-content: center;
     background-color: bisque;
 }
@@ -87,5 +87,14 @@ button{
 .pantalla-pago{
     display: grid;
     grid-template-columns: 80% 20%;
-    padding: 30px;
+    padding: 70px 150px;
+}
+
+.no-hay-stock{
+    background-color: #ccc;
+}
+
+.boton-pagar[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
 }

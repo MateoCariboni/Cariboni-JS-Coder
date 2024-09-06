@@ -10,15 +10,22 @@ const mostrarProductos = (productos) => {
             <h2>${producto.nombre}</h2>
             <p>Precio: $${producto.precio}</p>
             <p class="stock">Stock: ${producto.stock}</p>
-            <button>Agregar al Carrito</button>
+            <button class="${producto.stock === 0 ? 'no-hay-stock' : ''}" 
+                ${producto.stock === 0 ? 'disabled' : ''}>
+                ${producto.stock === 0 ? 'No hay stock' : 'Agregar al Carrito'}
+            </button>
         `;
 
         const botonAgregar = productoDiv.querySelector('button');
-        botonAgregar.addEventListener('click', () => agregarAlCarrito(producto.id, productos));
+
+        if (producto.stock > 0) {
+            botonAgregar.addEventListener('click', () => agregarAlCarrito(producto.id, productos));
+        }
 
         contenedorProductos.appendChild(productoDiv);
     });
 }
+
 
 const actualizarProductos = (productos) => {
     document.getElementById('productos').innerHTML = '';
@@ -62,7 +69,7 @@ const actualizarCarrito = () => {
 
 const pedirNombre = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    window.location.href = "detalle-compra.html";
+    window.location.href = "pages/detalle-compra.html";
 }
 
 
@@ -76,4 +83,3 @@ fetch("db/productos.json")
     .then(data => {
         mostrarProductos(data);
     })
-    .catch(error => console.error('Error al cargar los productos:', error));

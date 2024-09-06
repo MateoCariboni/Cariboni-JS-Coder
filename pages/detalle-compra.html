@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Compra</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script defer src="../js/detalle-compra.js"></script>
+</head>
+
+<body>
+    <nav>
+        <h1 class="detalle-nombre">Sm Fragancias</h1>
+    </nav>
+
+    <div class="pantalla-pago">
+        <section id="datos-tarjeta">
+            <h3>Selecciona un método de pago:</h3>
+            <form id="form-pago">
+                <label>
+                    <input type="radio" name="pago" value="efectivo" id="efectivo"> Efectivo
+                </label>
+                <label>
+                    <input type="radio" name="pago" value="debito" id="debito"> Débito
+                </label>
+                <label>
+                    <input type="radio" name="pago" value="cuotas" id="cuotas"> Cuotas
+                </label>
+            </form>
+
+            <div id="efectivoDiv" class="opciones">
+                <h4>Opción en efectivo: Abona al recibir</h4>
+            </div>
+
+            <div id="debitoDiv" class="opciones">
+                <h4>Opción en débito:</h4>
+                <form id="form-debito">
+                    <div>
+                        <label for="nombreTitular">Nombre del Titular</label>
+                        <input type="text" id="nombreTitular" class="full-width" placeholder="Nombre del Titular">
+                    </div><br>
+                    <div>
+                        <label for="codigoSeguridad">Código de seguridad</label>
+                        <input type="text" id="codigoSeguridad" placeholder="CVC">
+                    </div><br>
+                    <div>
+                        <label for="numeroTarjeta">Número de Tarjeta</label>
+                        <input type="text" id="numeroTarjeta" class="full-width" placeholder="Número de Tarjeta">
+                    </div><br>
+                    <div>
+                        <label for="fechaExpiracion">Fecha de expiración</label>
+                        <select id="mes">
+                            <option value="01">01 - Enero</option>
+                            <option value="02">02 - Febrero</option>
+                            <option value="03">03 - Marzo</option>
+                            <option value="04">04 - Abril</option>
+                            <option value="05">05 - Mayo</option>
+                            <option value="06">06 - Junio</option>
+                            <option value="07">07 - Julio</option>
+                            <option value="08">08 - Agosto</option>
+                            <option value="09">09 - Septiembre</option>
+                            <option value="10">10 - Octubre</option>
+                            <option value="11">11 - Noviembre</option>
+                            <option value="12">12 - Diciembre</option>
+                        </select>
+                        <select id="anio">
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                        </select>
+                    </div><br>
+                </form>
+            </div>
+
+            <div id="cuotasDiv" class="opciones">
+                <h4>Opción en cuotas:</h4>
+                <form id="form-cuotas">
+                    <label>
+                        <input type="radio" name="cuota" value="3"> 3 Cuotas
+                    </label>
+                    <label>
+                        <input type="radio" name="cuota" value="6"> 6 Cuotas
+                    </label>
+                    <label>
+                        <input type="radio" name="cuota" value="9"> 9 Cuotas
+                    </label>
+                    <label>
+                        <input type="radio" name="cuota" value="12"> 12 Cuotas
+                    </label>
+                </form>
+            </div>
+            <button type="submit" class="boton-pagar" id="botonPagar">Pagar</button>
+        </section>
+
+        <section>
+            <div id="detalle-compra">
+                <div id="items-detalle"></div>
+                <p id="total-compra"></p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
